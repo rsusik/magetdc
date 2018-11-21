@@ -68,7 +68,10 @@ int offsets[OFFSET_NUMBER] =	{
 	for(int i = 0; i < PATT_NUMBER; i++) {
 		sprintf(patterns_filename_txt, "%s.processed.%d.%d.patt.txt", text_filename, p_number, patt_lenghts[i]);
 		sprintf(patterns_filename_bin, "%s.processed.%d.%d.patt.bin", text_filename, p_number, patt_lenghts[i]);
-		ETDC_create_pattern_file(processed_text_filename, dict_filename, patterns_filename_bin, patt_lenghts[i], p_number, patterns_filename_txt);
+		if (ETDC_create_pattern_file(processed_text_filename, dict_filename, patterns_filename_bin, patt_lenghts[i], p_number, patterns_filename_txt) == EXIT_FAILURE) {
+			printf("Critical error\n");
+			return EXIT_FAILURE;
+		}
 	}
 	
 	return EXIT_SUCCESS;

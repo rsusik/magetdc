@@ -14,6 +14,6 @@ COPY . /app
 
 RUN cd /app && make all
 
-ENTRYPOINT ["python3", "etdc_mag_test.py"]
+ENTRYPOINT ["python3", "etdc_test.py"]
 
 

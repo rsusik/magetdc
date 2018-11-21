@@ -65,11 +65,9 @@ int ETDC_create_dictionary(char *set_filename, char *dict_filename) {
 	char *text = NULL;
 	printf("Text file reading (%s)\n", set_filename);
 	long text_size = read_file_content<char>(&text, set_filename);
-	if(text_size < 0) { printf("Error: File (%s) does not exists or you don't have permissions.\n", set_filename); return EXIT_FAILURE; }
+	if(text_size <= 0) { printf("Error: File (%s) does not exists, is empty, there is not enough RAM, or you don't have permissions.\n", set_filename); return EXIT_FAILURE; }
 	char *pch = strtok (text, ETDC_SEPARATORS);
 	long count = 0;
-
-	printf("Memory allocation\n");
 	
 	std::map<std::string, int> tokens;	// use hash instead of string to improve performance
 	std::string str = "";
@@ -95,7 +93,7 @@ int ETDC_create_dictionary(char *set_filename, char *dict_filename) {
 	}
 
 	printf("\n");
-	printf("Sorting\n");
+	printf("Sorting (number of tokens: %zu)\n", idx);
 	std::qsort(toks, idx, sizeof(s_token), (int(*)(const void*, const void*))token_compar);
 	printf("Saving dictionary to file (%s)\n", dict_filename);
 	FILE *f = fopen(dict_filename, "w");
@@ -171,7 +169,7 @@ size_t ETDC_create_map_str_to_etdc(char *dict, std::unordered_map<std::string, E
 	char *pch;
 	size_t idx = 0;
 	pch = strtok (dict, ETDC_SEPARATORS);
-	if(pch==NULL) { printf("Error: There is no tokens inside the dictionary file\n"); exit(EXIT_FAILURE); }
+	if(pch==NULL) { printf("Error: There are no tokens inside the dictionary file\n"); exit(EXIT_FAILURE); }
 	do {
 		str = pch;
 		dictionary->insert(std::pair<std::string,ETDC_code>(str,ETDC_encode(idx++)));
@@ -350,8 +348,12 @@ int ETDC_create_pattern_file(char *processed_text_filename, char *dict_filename,
 	srand (time(NULL));
 	int step = ceil((double)p_number/(double)80);
 	byte bytes[10000];
-	printf("count = %zu\n", count);
+	printf("Number of tokens in file: %zu\n", count);
 	for(int i = 0; i < p_number; i++) {
+		if (count + 1 - p_length < 1) {
+			printf("Error: Too small number of tokens in a file\n");
+			return EXIT_FAILURE;
+		}
 		idx = myRand() % (count + 1 - p_length);
 		memset(bytes, 0, 500);
 		byte *b_tmp = bytes + 1; // left one byte for number of bytes

@@ -54,7 +54,7 @@ int main(int argc, char *argv[]) {
 	if(denominator!=0) offset = (double)text_size / (double)denominator; else offset = ex_offset;
 
 	char index_filename[250] = {0};
-	sprintf(index_filename, "%s.%d.idx", enc_text_filename, offset);
+	sprintf(index_filename, "%s.%ld.idx", enc_text_filename, offset);
 
 	index_number = ETDC_read_index_file(index_filename, &etdc_idxs);
 	

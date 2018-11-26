@@ -66,7 +66,7 @@ void print_result(double pos_find_time, double pre_time, double search_time,
 	double pre_search_time = pre_time + search_time;
 	printf("%ld\t%ld\t", sigma, super_sigma);												// sigmas
 	printf("%ld\t%d\t%ld\t", pattern_size, denominator, offset);							// pattern size, denominator, offset
-	printf("%ld\t%ld\t%ld\t%ld\t%d\t%f\t%f\t",												// data information
+	printf("%ld\t%ld\t%ld\t%ld\t%lu\t%f\t%f\t",												// data information
 		enc_text_file_size, processed_text_file_size, dict_file_size, idx_size, 
 		map_el_count * sizeof(int) + dict_file_size,
 		(double)(enc_text_file_size+idx_size+dict_file_size)/(double)enc_text_file_size,

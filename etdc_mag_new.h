@@ -412,7 +412,7 @@ void print_result(double pos_find_time, double pre_time, double search_time,
 	double pre_search_time = pre_time + search_time;
 	printf("%ld\t%ld\t", sigma, super_sigma);												// sigmas
 	printf("%ld\t%d\t%ld\t", pattern_size, denominator, offset);							// pattern size, denominator, offset
-	printf("%ld\t%ld\t%ld\t%ld\t%d\t%f\t%f\t",												// data information
+	printf("%ld\t%ld\t%ld\t%ld\t%lu\t%f\t%f\t",												// data information
 		enc_text_file_size, processed_text_file_size, dict_file_size, idx_size, 
 		map_el_count * sizeof(int) + dict_file_size,
 		(double)(enc_text_file_size+idx_size+dict_file_size)/(double)enc_text_file_size,
@@ -463,7 +463,7 @@ template <class T> static void etdc_mag_verification( word d, word mm, int pos, 
 		verif++;
 		el.pattern = text + c;
 		index1 = T::get_q_gram(el.pattern);
-		if(index1>T::super_sigma) { printf("Error: index>super_sigma { index=%d, super_sigma=%d}", index1, T::super_sigma); exit(EXIT_FAILURE); }
+		if(index1>T::super_sigma) { printf("Error: index>super_sigma { index=%ld, super_sigma=%ld}", index1, T::super_sigma); exit(EXIT_FAILURE); }
 		el2 = (pelem*)bsearch(&el, indexed_patterns[index1].list, indexed_patterns[index1].count, sizeof(pelem), (int (*)(const void *, const void *))pelem_compar);
 		if(el2) {
 			ref = el2;

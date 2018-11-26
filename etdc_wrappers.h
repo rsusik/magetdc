@@ -568,7 +568,7 @@ unsigned int build_indexed_patterns_wrapper(const long sigma, const unsigned int
 			printf("Error: Not supported parameters\n"); exit(1); 
 		}
 	}
-
+	printf("Error: Not supported parameters\n"); exit(1); 
 }
 
 unsigned int search_wrapper(const int sigma, const unsigned int U, const unsigned int k, const unsigned int q_size) {
@@ -3873,6 +3873,7 @@ unsigned int search_wrapper(const int sigma, const unsigned int U, const unsigne
 			printf("Error: Not supported parameters\n"); exit(1); 
 		}
 	}
+	printf("Error: Not supported parameters\n"); exit(1); 
 }
 
 template<class T> void EncodeText_wrapper(T * text, const int sigma, unsigned int q_gram, unsigned int u, unsigned int k) {

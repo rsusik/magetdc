@@ -113,9 +113,9 @@ int main(int argc, char *argv[]) {
 	std::sort( results.begin(), results.end() );
 	results.erase( std::unique( results.begin(), results.end() ), results.end() );
 	for (int i = 0; i < results.size(); i++) {
-		printf("%d\t%.*s\n", results[i], 50, orginal_text+results[i]);
+		printf("%ld\t%.*s\n", results[i], 50, orginal_text+results[i]);
 	}
-	printf("\n\nFound %d matches\n", counter);
+	printf("\n\nFound %zu matches\n", counter);
 
 
 	fclose(file);

@@ -13,8 +13,8 @@
 
 /* Function Declarations */
 template <class T> int CreateMap_wrapper(T*, int, int);
-unsigned int build_indexed_patterns_wrapper(const long, const unsigned int);
-unsigned int search_wrapper(const int, const unsigned int, const unsigned int, const unsigned int);
+void build_indexed_patterns_wrapper(const long, const unsigned int);
+void search_wrapper(const int, const unsigned int, const unsigned int, const unsigned int);
 /* EncodeText is defined in smag.h */
 template<class T, unsigned int Q, unsigned int U, unsigned int K, unsigned int SIGMA> void EncodeText(T * );
 template<class T> void EncodeText_wrapper(T *, const int, unsigned int, unsigned int, unsigned int);
@@ -67,7 +67,7 @@ template <class T> int CreateMap_wrapper(T* t, int n, int new_sigma) {
 	}
 }
 
-unsigned int build_indexed_patterns_wrapper(const long sigma, const unsigned int q_size) {
+void build_indexed_patterns_wrapper(const long sigma, const unsigned int q_size) {
 	if(sigma == 4) {
 		if( q_size == 1 ) {
 			BUILD_INDEXED_PATTERNS_FUNCTION<1, 4>();
@@ -568,10 +568,10 @@ unsigned int build_indexed_patterns_wrapper(const long sigma, const unsigned int
 			printf("Error: Not supported parameters\n"); exit(1); 
 		}
 	}
-	printf("Error: Not supported parameters\n"); exit(1); 
+
 }
 
-unsigned int search_wrapper(const int sigma, const unsigned int U, const unsigned int k, const unsigned int q_size) {
+void search_wrapper(const int sigma, const unsigned int U, const unsigned int k, const unsigned int q_size) {
 	// Generated code
 	if(sigma == 4) {
 		if( k == 1 && U == 4 && q_size == 1 ) {
@@ -3873,7 +3873,6 @@ unsigned int search_wrapper(const int sigma, const unsigned int U, const unsigne
 			printf("Error: Not supported parameters\n"); exit(1); 
 		}
 	}
-	printf("Error: Not supported parameters\n"); exit(1); 
 }
 
 template<class T> void EncodeText_wrapper(T * text, const int sigma, unsigned int q_gram, unsigned int u, unsigned int k) {

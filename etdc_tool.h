@@ -122,7 +122,7 @@ int ETDC_decode(byte *bytes, int *decoded) {
 		return 3;
 	} else {
 		printf("Not supported code (first 4 bytes -> %d | %d | %d | %d)\n", bytes[0], bytes[1], bytes[2], bytes[3]); 
-		printf("bytes pos = %d\n", bytes);
+		printf("bytes pos = %p\n", bytes);
 		exit(EXIT_FAILURE);
 	}
 }
@@ -350,7 +350,7 @@ int ETDC_create_pattern_file(char *processed_text_filename, char *dict_filename,
 	srand (time(NULL));
 	int step = ceil((double)p_number/(double)80);
 	byte bytes[10000];
-	printf("count = %d\n", count);
+	printf("count = %zu\n", count);
 	for(int i = 0; i < p_number; i++) {
 		idx = myRand() % (count + 1 - p_length);
 		memset(bytes, 0, 500);

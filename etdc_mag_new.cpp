@@ -62,7 +62,7 @@ int main(int argc, char *argv[]) {
 	if(denominator!=0) offset = (double)text_size / (double)denominator; else offset = ex_offset;
 
 	char index_filename[250] = {0};
-	sprintf(index_filename, "%s.%d.idx", enc_text_filename, offset);
+	sprintf(index_filename, "%s.%ld.idx", enc_text_filename, offset);
 
 	index_number = ETDC_read_index_file(index_filename, &etdc_idxs);
 
@@ -73,7 +73,7 @@ int main(int argc, char *argv[]) {
 
 	t_start(t_pre);
 	uint64_t as = get_super_sigma(q_size);
-	if( get_super_sigma(q_size) > 200000000 || get_super_sigma(q_size) == 0) { printf("Error: Q is too big for choosen sigma size { q=%d, super_sigma=%d }\n", q_size, get_super_sigma(q_size)); exit(EXIT_FAILURE); }
+	if( get_super_sigma(q_size) > 200000000 || get_super_sigma(q_size) == 0) { printf("Error: Q is too big for choosen sigma size { q=%d, super_sigma=%zu }\n", q_size, get_super_sigma(q_size)); exit(EXIT_FAILURE); }
 
 	indexed_patterns = (plist*)calloc(get_super_sigma(q_size), sizeof(plist));
 	for(int i = 0; i < get_super_sigma(q_size); ++i) {

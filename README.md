@@ -126,7 +126,7 @@ cd magetdc
 
 * Build the image:
 ```shell
-docker build -t magetdc
+docker build -t magetdc .
 ```
 
 * Run container:

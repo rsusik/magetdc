@@ -9,8 +9,8 @@ This is MAG variant that searches patterns in ETDC encoded text. This source cod
 ## Requirements
 * C++ compiler compatible 
 * Unix based 64-bit OS (compilation works also in Cygwin)
-* Python 3 (for testing)
-* Docker (optionally)
+* Python 3 (for [testing](#testing))
+* [Docker](#docker) (optionally)
 
 ## Compilation
 
@@ -127,6 +127,12 @@ cd magetdc
 * Build the image:
 ```shell
 docker build -t magetdc .
+```
+
+* Or pull from repository:
+```
+docker pull rsusik/magetdc
+docker tag docker.io/rsusik/magetdc magetdc
 ```
 
 * Run container:

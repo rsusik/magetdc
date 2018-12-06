@@ -35,6 +35,7 @@ def check_corpus_existance(c_dir, c):
 		if ret.code != 200:
 			return False
 	gz_filename = "{}.gz".format(filename)
+	os.makedirs(os.path.dirname(gz_filename), exist_ok=True)
 	with urlopen(url) as response, open(gz_filename, 'wb') as gz_file:
 		shutil.copyfileobj(response, gz_file)
 	if os.path.isfile(gz_filename):

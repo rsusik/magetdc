@@ -11,7 +11,7 @@ parser = argparse.ArgumentParser(description='MAG testing script.',
                 epilog="Example:\npython3 etdc_test.py -a etdc_mag -c english.10MB -r 100 -m 8,32 -q 2 -s 5 -u 4 -k 2 -d 1000000")
 parser.add_argument("-r", "--npatterns", dest='r', type=str, default='100', help="number of patterns")
 parser.add_argument("-a", "--algorithm", dest='a', type=str, default='etdc_mag_l2', help="algorithm[s] to be tested")
-parser.add_argument("-c", "--corpus", dest='c', type=str, default='english.10MB', help="corpus")
+parser.add_argument("-c", "--corpus", dest='c', type=str, default='english.100MB', help="corpus")
 parser.add_argument("-m", "--length", dest='m', type=str, default='8,16,32,64', help="pattern length[s] (e.g. 8,16,32)")
 parser.add_argument("-u", "--faosou", dest='u', type=str, default='4', help="FAOSO parameter U")
 parser.add_argument("-k", "--faosok", dest='k', type=str, default='2', help="FAOSO parameter k")

@@ -22,7 +22,7 @@ make all
 ```
 
 ## Running (MANUALLY)
-*Note: it is recomended to run tests using python script `etdc_test.py` which is described below*
+*Note: it is recomended to run tests using python script `etdc_test.py` which is described in next section ([testing](#testing))*
 
 ```shell
 ./filename [enc_patt] [m], [enc_set], [u], [k], [q], [sig], [denom], [set]
